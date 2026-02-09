@@ -1,0 +1,18 @@
+public class FirstProgram {
+public static void main(String args[ ]){
+	System.out.println("Hello World");
+	System.out.println("FirstProgram");
+}
+}
+
+//Basic Java Programs and Control Sttrucutre 
+// Problem Defincation : Write Jav Programs to 
+// Palingrrom number - check if a 	numbe reads the same foward and backwards , using only math operators, 
+// Print the Flods Triabgle 
+//           1
+//            2   3
+//            4  5  6
+//           7  8 9 10 
+// 3. Convert a binnary number to its octal form , conver tto dcimal first as intermediate step 
+// 4 . First and last degital , exract and print and first and lasr degital of a number 
+/// 5 . ask for numbe rn and limit l , then print the mutiplication tabke for n up to l    
