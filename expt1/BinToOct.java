@@ -6,21 +6,29 @@ public class BinToOct {
         System.out.println("Enter Your Binary Number:");
 		     int bin = sc.nextInt();
 		System.out.println("Your Binary Number:"+bin);
-        double dec = 0;
-		int i =1;
+        int dec = 0;
+		int base =1;
         while (bin > 0) {
             int x = bin % 10;
-            dec= dec + x*Math.pow(2,i);
+            dec += x * base;
+			base*=2;
             bin = bin / 10;
-			i++;
         }
             System.out.println("Your Decimal Number:"+dec); 
-			int oct=0;
+		    int oct=0;
 			 while (dec > 0) {
-            int x = bin % 8;
-            oct = oct *10+x;
-            dec=dec/10;
+            int x = dec % 8;
+           oct = oct *10+x;
+            dec=dec/8;
         }
-		 System.out.println("Your Octet Number:"+oct); 
+		
+		 System.out.print("Your Octet Number:"); 
+		 int x=0;
+		 	while (oct > 0) {
+            x = oct % 10;
+			System.out.print(x); 
+            oct=oct/10;
+        }
+				 System.out.print(""); 
         }
     }
