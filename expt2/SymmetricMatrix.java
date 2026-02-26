@@ -36,7 +36,6 @@ public class SymmetricMatrix {
 
         System.out.print("Enter number of cols of the matrix: ");
         int cols = sc.nextInt();
-
         if (rows != cols) {
             System.out.println("Matrix cannot be symmetric (not square).");
             sc.close();

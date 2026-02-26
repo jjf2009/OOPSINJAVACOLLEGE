@@ -1,8 +1,6 @@
 import java.util.Scanner;
 
 public class IdentityMatrix {
-
-
     static boolean  isIdentity(int mat[][], int N) {
         boolean id = true;
         for (int i = 0; i < N; i++){
@@ -11,7 +9,6 @@ public class IdentityMatrix {
 		}
 			return id;
     }
-
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
 

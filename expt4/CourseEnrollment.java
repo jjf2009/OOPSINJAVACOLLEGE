@@ -22,11 +22,30 @@ class Course {
 
 public class CourseEnrollment {
     public static void main(String[] args) {
-        Course[] courses = {
-                new Course(1, "Java Programming", 5000),
-                new Course(2, "Data Structures", 6000),
-                new Course(3, "Database Systems", 5500)
-        };
+
+        java.util.Scanner scanner = new java.util.Scanner(System.in);
+        
+        System.out.print("Enter number of courses: ");
+        int n = scanner.nextInt();
+        
+        Course[] courses = new Course[n];
+        
+        for (int i = 0; i < n; i++) {
+            System.out.println("\nEnter details for course " + (i + 1) + ":");
+            System.out.print("Course ID: ");
+            int courseId = scanner.nextInt();
+            scanner.nextLine(); 
+            System.out.print("Course Name: ");
+            String courseName = scanner.nextLine();
+            System.out.print("Fee: ");
+            double fee = scanner.nextDouble();
+            
+            courses[i] = new Course(courseId, courseName, fee);
+        }
+        
+        scanner.close();
+        System.out.println("\n--- Course Details ---");
+
 
         double totalFee = 0;
 

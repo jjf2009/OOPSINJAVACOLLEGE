@@ -1,46 +1,58 @@
 import java.util.Scanner;
-import java.util.Arrays;
+
 
 public class MergeSortofArray {
+static void printArray(int arr[]) {
+    for (int num : arr) {
+        System.out.print(num + " ");
+    }
+    System.out.println();
+}
 	
-	   static void merge(int arr[], int l, int m, int r){
-        
-        int n1 = m - l + 1;
-        int n2 = r - m;
-        int L[] = new int[n1];
-        int R[] = new int[n2];
+static void merge(int arr[], int l, int m, int r){
 
+    int n1 = m - l + 1;
+    int n2 = r - m;
 
-        for (int i = 0; i < n1; ++i)
-            L[i] = arr[l + i];
-        for (int j = 0; j < n2; ++j)
-            R[j] = arr[m + 1 + j];
+    int L[] = new int[n1];
+    int R[] = new int[n2];
 
-        int i = 0, j = 0;
+    for (int i = 0; i < n1; ++i)
+        L[i] = arr[l + i];
+    for (int j = 0; j < n2; ++j)
+        R[j] = arr[m + 1 + j];
 
-        int k = l;
-        while (i < n1 && j < n2) {
-            if (L[i] <= R[j]) {
-                arr[k] = L[i];
-                i++;
-            }
-            else {
-                arr[k] = R[j];
-                j++;
-            }
-            k++;
-        }
-        while (i < n1) {
+    int i = 0, j = 0;
+    int k = l;
+
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
             arr[k] = L[i];
             i++;
-            k++;
-        }
-        while (j < n2) {
+        } else {
             arr[k] = R[j];
             j++;
-            k++;
         }
+        k++;
+
+        // Print after each iteration
+        printArray(arr);
     }
+
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+        printArray(arr);
+    }
+
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+        printArray(arr);
+    }
+}
 	    static void mergeSort(int arr[], int l, int r){
         if (l < r) {
             int m = l + (r - l) / 2;

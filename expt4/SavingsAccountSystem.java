@@ -22,11 +22,17 @@ class SavingsAccount {
 
 public class SavingsAccountSystem {
     public static void main(String[] args) {
-        SavingsAccount[] accounts = {
-                new SavingsAccount(101, "Rahul", 10000),
-                new SavingsAccount(102, "Anita", 15000),
-                new SavingsAccount(103, "Vikram", 20000)
-        };
+        java.util.Scanner sc = new java.util.Scanner(System.in);
+        System.out.print("Enter number of accounts: ");
+        int n = sc.nextInt();
+        SavingsAccount[] accounts = new SavingsAccount[n];
+        for (int i = 0; i < n; i++) {
+            System.out.println("Enter details for account " + (i + 1) + " (accountNumber name balance):");
+            int accNo = sc.nextInt();
+            String name = sc.next();
+            double balance = sc.nextDouble();
+            accounts[i] = new SavingsAccount(accNo, name, balance);
+        }
 
         double interestRate = 5.0;
 
