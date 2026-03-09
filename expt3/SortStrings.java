@@ -8,12 +8,18 @@ public class SortStrings {
                     args[j] = args[j + 1];
                     args[j + 1] = temp;
                 }
+                for (int k = 0; k < args.length; k++) {
+                    System.out.print(args[k] + " ");
+                }
+                System.out.println();
             }
         }
 
-        System.out.println("Sorted strings:");
+        System.out.println("\nSorted strings:");
         for (int i = 0; i < args.length; i++) {
             System.out.println(args[i]);
         }
     }
 }
+
+
