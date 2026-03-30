@@ -69,6 +69,23 @@ public class BookInventorySystem {
             b.displayDetails();
         }
 
+        System.out.print("Enter id of book to update price : ");
+         int j = sc.nextInt();
+             sc.nextLine();
+            j--;
+         for(int i=0;i<n;i++){
+            if(i==j){
+                System.out.print("Enter  update price : ");
+                double newPrice = sc.nextDouble();
+                books[i].updatePrice(newPrice);
+            }
+         }
+
+        System.out.println("\n--- Upated Book Details ---");
+        for (BookInventory b : books) {
+            b.displayDetails();
+        }
+
         System.out.println("Total Books Created: " + BookInventory.getTotalBooks());
 
         sc.close();
