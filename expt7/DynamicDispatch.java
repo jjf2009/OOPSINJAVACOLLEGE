@@ -1,11 +1,9 @@
-// Q3. Dynamic Method Dispatch – Game Characters
-
 class Character {
     private String name;
     private int    health;
     private int    level;
 
-    public Character(String name, int health, int level) {
+     Character(String name, int health, int level) {
         this.name   = name;
         this.health = health;
         this.level  = level;
@@ -19,7 +17,6 @@ class Character {
     public void   setHealth(int h)    { this.health = h; }
     public void   setLevel(int l)     { this.level = l; }
 
-    // Base method — JVM resolves the correct version at RUNTIME (dynamic dispatch)
     public void attack() {
         System.out.println(name + " performs a basic attack.");
     }
@@ -36,7 +33,7 @@ class Warrior extends Character {
     private String weaponType;
     private int    attackPower;
 
-    public Warrior(String name, int health, int level, String weaponType, int attackPower) {
+    Warrior(String name, int health, int level, String weaponType, int attackPower) {
         super(name, health, level);
         this.weaponType  = weaponType;
         this.attackPower = attackPower;
@@ -65,39 +62,26 @@ class Warrior extends Character {
 
 class Mage extends Character {
     private String spellName;
-    private int    manaCost;
-    private int    spellDamage;
 
-    public Mage(String name, int health, int level,
-                String spellName, int manaCost, int spellDamage) {
+
+    Mage(String name, int health, int level,String spellName) {
         super(name, health, level);
         this.spellName   = spellName;
-        this.manaCost    = manaCost;
-        this.spellDamage = spellDamage;
     }
 
-    // Getters & Setters
-    public String getSpellName()              { return spellName; }
-    public int    getManaCost()               { return manaCost; }
-    public int    getSpellDamage()            { return spellDamage; }
-    public void   setSpellName(String s)      { this.spellName = s; }
-    public void   setManaCost(int m)          { this.manaCost = m; }
-    public void   setSpellDamage(int d)       { this.spellDamage = d; }
 
+    public String getSpellName()              { return spellName; }
+    public void   setSpellName(String s)      { this.spellName = s; }
     @Override
     public void attack() {
         System.out.println("[Mage] " + getName() +
-                " casts " + spellName +
-                " consuming " + manaCost + " mana" +
-                " and dealing " + spellDamage + " magic damage!");
+                " casts " + spellName );
     }
 
     @Override
     public String toString() {
         return "[Mage]\n" + super.toString() +
-               "\nSpell  : " + spellName +
-               "\nMana   : " + manaCost +
-               "\nDamage : " + spellDamage;
+               "\nSpell  : " + spellName ;
     }
 }
 
@@ -105,7 +89,7 @@ class Archer extends Character {
     private int    arrowCount;
     private double accuracy;   // in percentage
 
-    public Archer(String name, int health, int level, int arrowCount, double accuracy) {
+     Archer(String name, int health, int level, int arrowCount, double accuracy) {
         super(name, health, level);
         this.arrowCount = arrowCount;
         this.accuracy   = accuracy;
@@ -148,9 +132,8 @@ public class DynamicDispatch {
         System.out.print("Archer name: ");
         String archerName = sc.nextLine();
 
-        // Simple default stats
         Character warrior = new Warrior(warriorName, 500, 10, "Sword", 120);
-        Character mage    = new Mage(mageName, 300, 12, "Fireball", 80, 200);
+        Character mage    = new Mage(mageName, 300, 12, "Fireball");
         Character archer  = new Archer(archerName, 350, 8, 30, 95.5);
 
         System.out.println("\n=== Battle Round ===");

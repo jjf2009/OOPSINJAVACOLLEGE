@@ -1,10 +1,9 @@
-// Q4. Abstract Class – Payment System
 
 abstract class Payment {
     private String payerName;
     private double amount;
 
-    public Payment(String payerName, double amount) {
+     Payment(String payerName, double amount) {
         this.payerName = payerName;
         this.amount    = amount;
     }
@@ -27,7 +26,7 @@ class CreditCardPayment extends Payment {
     private String cardNumber;
     private String bankName;
 
-    public CreditCardPayment(String payerName, double amount,String cardNumber, String bankName) {
+    CreditCardPayment(String payerName, double amount,String cardNumber, String bankName) {
         super(payerName, amount);              
         this.cardNumber = cardNumber;
         this.bankName   = bankName;
@@ -59,7 +58,7 @@ class CreditCardPayment extends Payment {
 class UPIPayment extends Payment {
     private String upiId;
 
-    public UPIPayment(String payerName, double amount, String upiId) {
+    UPIPayment(String payerName, double amount, String upiId) {
         super(payerName, amount);              // constructor chaining
         this.upiId = upiId;
     }

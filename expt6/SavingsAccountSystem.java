@@ -1,10 +1,9 @@
-// Q1. Single Inheritance – Banking Transaction
 
 class Account {
     private String accountNumber;
     private String accountHolder;
 
-    public Account(String accountNumber, String accountHolder) {
+     Account(String accountNumber, String accountHolder) {
         this.accountNumber = accountNumber;
         this.accountHolder = accountHolder;
     }
@@ -25,16 +24,14 @@ class Account {
 class SavingsAccount extends Account {
     private double interestRate;
 
-    public SavingsAccount(String accountNumber, String accountHolder, double interestRate) {
+     SavingsAccount(String accountNumber, String accountHolder, double interestRate) {
         super(accountNumber, accountHolder);   
         this.interestRate = interestRate;
         System.out.println("SavingsAccount constructor called.");
     }
 
-    // Getter
     public double getInterestRate() { return interestRate; }
 
-    // Setter
     public void setInterestRate(double interestRate) { this.interestRate = interestRate; }
 
     @Override

@@ -1,7 +1,7 @@
 class Device {
     private String deviceName;
 
-    public Device(String deviceName) {
+     Device(String deviceName) {
         this.deviceName = deviceName;
     }
 
@@ -17,7 +17,7 @@ class Device {
 class Computer extends Device {
     private String processor;
 
-    public Computer(String deviceName, String processor) {
+    Computer(String deviceName, String processor) {
         super(deviceName);                         
         this.processor = processor;
 
@@ -35,7 +35,7 @@ class Computer extends Device {
 class Laptop extends Computer {
     private int batteryLife;   
 
-    public Laptop(String deviceName, String processor, int batteryLife) {
+    Laptop(String deviceName, String processor, int batteryLife) {
         super(deviceName, processor);              
         this.batteryLife = batteryLife;
        
@@ -70,18 +70,6 @@ public class DeviceSystem {
 
         System.out.println("\n=== Complete Device Details ===");
         System.out.println(laptop);
-
-  
-        System.out.print("\nEnter updated Battery Life (hours): ");
-        laptop.setBatteryLife(sc.nextInt());
-        sc.nextLine(); 
-
-        System.out.print("Enter updated Processor: ");
-        laptop.setProcessor(sc.nextLine());
-
-        System.out.println("\n=== After Update ===");
-        System.out.println(laptop);
-
         sc.close();
     }
 }

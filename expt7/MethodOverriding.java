@@ -4,18 +4,17 @@ class Transport {
     private String transportName;
     private String route;
 
-    public Transport(String transportName, String route) {
+     Transport(String transportName, String route) {
         this.transportName = transportName;
         this.route         = route;
     }
 
-    // Getters & Setters
     public String getTransportName()                   { return transportName; }
     public String getRoute()                           { return route; }
     public void   setTransportName(String name)        { this.transportName = name; }
     public void   setRoute(String route)               { this.route = route; }
 
-    // Base method — overridden by each subclass
+
     public double fare() {
         return 0.0;
     }
@@ -29,33 +28,27 @@ class Transport {
 }
 
 class Bus extends Transport {
-    private int    passengerCount;
-    private static final double RATE_PER_KM = 1.5;
+    private static  double fare = 1.5;
     private double distanceKm;
 
-    public Bus(String route, double distanceKm, int passengerCount) {
+    public Bus(String route, double distanceKm) {
         super("Bus", route);
         this.distanceKm     = distanceKm;
-        this.passengerCount = passengerCount;
     }
 
-    // Getters & Setters
-    public int    getPassengerCount()                    { return passengerCount; }
     public double getDistanceKm()                        { return distanceKm; }
-    public void   setPassengerCount(int passengerCount)  { this.passengerCount = passengerCount; }
     public void   setDistanceKm(double distanceKm)       { this.distanceKm = distanceKm; }
 
     @Override
     public double fare() {
-        // Flat rate × distance, discount if group > 20
-        double base = RATE_PER_KM * distanceKm;
-        return passengerCount > 20 ? base * 0.9 : base;
+        double base = fare * distanceKm;
+        return base;
     }
 
     @Override
     public String toString() {
         return "[Bus]\n" + super.toString() +
-               "\nPassengers: " + passengerCount;
+               "\nPassengers: " ;
     }
 }
 
@@ -63,13 +56,12 @@ class Train extends Transport {
     private String classType;  // "Sleeper", "AC", "General"
     private double distanceKm;
 
-    public Train(String route, double distanceKm, String classType) {
+     Train(String route, double distanceKm, String classType) {
         super("Train", route);
         this.distanceKm = distanceKm;
         this.classType  = classType;
     }
 
-    // Getters & Setters
     public String getClassType()                  { return classType; }
     public double getDistanceKm()                 { return distanceKm; }
     public void   setClassType(String classType)  { this.classType = classType; }
@@ -77,12 +69,11 @@ class Train extends Transport {
 
     @Override
     public double fare() {
-        // Rate per km based on class
         double rate;
         switch (classType) {
             case "AC":      rate = 3.5; break;
             case "Sleeper": rate = 2.0; break;
-            default:        rate = 0.8; // General
+            default:        rate = 0.8; 
         }
         return rate * distanceKm;
     }
@@ -96,10 +87,9 @@ class Train extends Transport {
 
 class Taxi extends Transport {
     private double distanceKm;
-    private static final double BASE_FARE   = 50.0;
-    private static final double RATE_PER_KM = 12.0;
+    private static final double fare = 12.0;
 
-    public Taxi(String route, double distanceKm) {
+     Taxi(String route, double distanceKm) {
         super("Taxi", route);
         this.distanceKm = distanceKm;
     }
@@ -110,8 +100,7 @@ class Taxi extends Transport {
 
     @Override
     public double fare() {
-        // Base fare + rate × distance
-        return BASE_FARE + (RATE_PER_KM * distanceKm);
+        return fare* distanceKm;
     }
 
     @Override
@@ -131,14 +120,12 @@ public class MethodOverriding {
         String busRoute = sc.nextLine();
         System.out.print("Distance (km): ");
         double busDistance = Double.parseDouble(sc.nextLine());
-        System.out.print("Passenger count: ");
-        int passengerCount = Integer.parseInt(sc.nextLine());
-
         System.out.println("\nEnter Train details:");
         System.out.print("Route: ");
         String trainRoute = sc.nextLine();
         System.out.print("Distance (km): ");
-        double trainDistance = Double.parseDouble(sc.nextLine());
+        double trainDistance = sc.nextDouble();
+        sc.nextLine();
         System.out.print("Class (General/Sleeper/AC): ");
         String classType = sc.nextLine();
 
@@ -146,18 +133,16 @@ public class MethodOverriding {
         System.out.print("Route: ");
         String taxiRoute = sc.nextLine();
         System.out.print("Distance (km): ");
-        double taxiDistance = Double.parseDouble(sc.nextLine());
+        double taxiDistance = sc.nextDouble();
 
-        Transport bus = new Bus(busRoute, busDistance, passengerCount);
+        Transport bus = new Bus(busRoute, busDistance);
         Transport train = new Train(trainRoute, trainDistance, classType);
         Transport taxi = new Taxi(taxiRoute, taxiDistance);
-
         System.out.println("\n=== Fare Summary ===");
-        Transport[] vehicles = { bus, train, taxi };
-        for (Transport t : vehicles) {
-            System.out.printf("%s | Route: %s | Fare: Rs. %.2f%n",
-                t.getTransportName(), t.getRoute(), t.fare());
-        }
+
+        System.out.println(bus);
+        System.out.println(train);
+        System.out.println(taxi);
 
         sc.close();
     }

@@ -1,55 +1,45 @@
-// Q3. Multi-Level Media System – Abstract Class Chain
-
-// Level 1 — Abstract base
 abstract class Media {
     private String title;
     private String artist;
-    private double durationMinutes;
 
-    public Media(String title, String artist, double durationMinutes) {
+    public Media(String title, String artist) {
         this.title           = title;
         this.artist          = artist;
-        this.durationMinutes = durationMinutes;
     }
 
     // Getters & Setters
     public String getTitle()                       { return title; }
     public String getArtist()                      { return artist; }
-    public double getDurationMinutes()             { return durationMinutes; }
     public void   setTitle(String title)           { this.title = title; }
     public void   setArtist(String artist)         { this.artist = artist; }
-    public void   setDurationMinutes(double d)     { this.durationMinutes = d; }
-
     // Abstract — every Media subclass must define how it plays
     public abstract void play();
 
     @Override
     public String toString() {
         return "Title    : " + title +
-               "\nArtist   : " + artist +
-               String.format("%nDuration : %.2f mins", durationMinutes);
+               "\nArtist   : " + artist ;
     }
 }
 
-// Level 2 — Abstract subclass; adds its own abstract method
-abstract class AudioMedia extends Media {
-    private int    volume;     // 0–100
-    private String audioFormat; // MP3, FLAC, WAV, etc.
 
-    public AudioMedia(String title, String artist, double durationMinutes,
+abstract class AudioMedia extends Media {
+    private int    volume;     
+    private String audioFormat; 
+
+    public AudioMedia(String title, String artist,
                       int volume, String audioFormat) {
-        super(title, artist, durationMinutes);
+        super(title, artist);
         this.volume      = volume;
         this.audioFormat = audioFormat;
     }
 
-    // Getters & Setters
     public int    getVolume()                   { return volume; }
     public String getAudioFormat()              { return audioFormat; }
     public void   setVolume(int volume)         { this.volume = Math.min(100, Math.max(0, volume)); }
     public void   setAudioFormat(String fmt)    { this.audioFormat = fmt; }
 
-    // Abstract — concrete class decides how volume adjustment behaves
+
     public abstract void adjustVolume(int delta);
 
     @Override
@@ -60,22 +50,21 @@ abstract class AudioMedia extends Media {
     }
 }
 
-// Level 3 — Concrete class; implements both abstract methods
+
 class MusicPlayer extends AudioMedia {
     private String  playlistName;
     private boolean isShuffle;
     private boolean isRepeat;
 
-    public MusicPlayer(String title, String artist, double durationMinutes,
+    public MusicPlayer(String title, String artist,
                        int volume, String audioFormat,
                        String playlistName, boolean isShuffle, boolean isRepeat) {
-        super(title, artist, durationMinutes, volume, audioFormat);
+        super(title, artist, volume, audioFormat);
         this.playlistName = playlistName;
         this.isShuffle    = isShuffle;
         this.isRepeat     = isRepeat;
     }
 
-    // Getters & Setters
     public String  getPlaylistName()              { return playlistName; }
     public boolean isShuffle()                    { return isShuffle; }
     public boolean isRepeat()                     { return isRepeat; }
@@ -112,12 +101,8 @@ class MusicPlayer extends AudioMedia {
     }
 }
 
-public class Q3_MediaSystem {
-    private static boolean readBoolean(java.util.Scanner sc, String prompt) {
-        System.out.print(prompt + " (true/false): ");
-        String input = sc.nextLine().trim().toLowerCase();
-        return input.equals("true") || input.equals("yes") || input.equals("y") || input.equals("1");
-    }
+public class MediaSystem {
+
 
     public static void main(String[] args) {
         java.util.Scanner sc = new java.util.Scanner(System.in);
@@ -129,23 +114,22 @@ public class Q3_MediaSystem {
         System.out.print("Artist: ");
         String artist = sc.nextLine();
 
-        System.out.print("Duration (minutes): ");
-        double duration = Double.parseDouble(sc.nextLine());
-
         System.out.print("Volume (0-100): ");
-        int volume = Integer.parseInt(sc.nextLine());
-
+        int volume = sc.nextInt();
+        sc.nextLine();
         System.out.print("Audio format: ");
         String format = sc.nextLine();
 
         System.out.print("Playlist name: ");
         String playlist = sc.nextLine();
+        System.out.print("Shuffle (true/false): ");
+        boolean shuffle = sc.nextBoolean();
 
-        boolean shuffle = readBoolean(sc, "Shuffle");
-        boolean repeat = readBoolean(sc, "Repeat");
+        System.out.print("Repeat (true/false): ");
+        boolean repeat = sc.nextBoolean();
 
         MusicPlayer player = new MusicPlayer(
-                title, artist, duration,
+                title, artist,
                 volume, format,
                 playlist, shuffle, repeat
         );
@@ -161,15 +145,9 @@ public class Q3_MediaSystem {
         player.adjustVolume(40);
         player.adjustVolume(-110);
 
-        System.out.println("\n=== Polymorphism via Media reference ===\n");
-        Media m = new MusicPlayer("Starboy", "The Weeknd", 3.52,
-                60, "MP3", "Top Hits", false, true);
-        m.play();
-
-        player.setVolume(65);
-        player.setShuffle(false);
-        System.out.println("\n=== After Settings Update ===");
         System.out.println(player);
+
+
 
         sc.close();
     }

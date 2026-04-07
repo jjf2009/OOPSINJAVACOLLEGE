@@ -1,10 +1,7 @@
-// Q4. Polymorphism in Interfaces – Shape
+
 
 interface Shape {
-    // Contract — every implementing class MUST define these
     void   draw();
-    double area();
-    double perimeter();
 }
 
 class Circle implements Shape {
@@ -16,7 +13,7 @@ class Circle implements Shape {
         this.color  = color;
     }
 
-    // Getters & Setters
+
     public double getRadius()           { return radius; }
     public String getColor()            { return color; }
     public void   setRadius(double r)   { this.radius = r; }
@@ -29,22 +26,10 @@ class Circle implements Shape {
     }
 
     @Override
-    public double area() {
-        return Math.PI * radius * radius;
-    }
-
-    @Override
-    public double perimeter() {
-        return 2 * Math.PI * radius;
-    }
-
-    @Override
     public String toString() {
         return "[Circle]" +
                "\nColor       : " + color +
-               "\nRadius      : " + radius +
-               String.format("%nArea        : %.2f", area()) +
-               String.format("%nCircumfrnce : %.2f", perimeter());
+               "\nRadius      : " + radius ;
     }
 }
 
@@ -57,7 +42,6 @@ class Square implements Shape {
         this.color = color;
     }
 
-    // Getters & Setters
     public double getSide()           { return side; }
     public String getColor()          { return color; }
     public void   setSide(double s)   { this.side = s; }
@@ -69,43 +53,29 @@ class Square implements Shape {
                 " square with side " + side + " units.");
     }
 
-    @Override
-    public double area() {
-        return side * side;
-    }
-
-    @Override
-    public double perimeter() {
-        return 4 * side;
-    }
 
     @Override
     public String toString() {
         return "[Square]" +
                "\nColor     : " + color +
-               "\nSide      : " + side +
-               String.format("%nArea      : %.2f", area()) +
-               String.format("%nPerimeter : %.2f", perimeter());
+               "\nSide      : " + side ;
     }
 }
 public class InterfacePolymorphism {
     public static void main(String[] args) {
         java.util.Scanner sc = new java.util.Scanner(System.in);
-
-        // User input
         System.out.print("Enter circle radius: ");
         double radius = sc.nextDouble();
-        sc.nextLine(); // consume newline
+        sc.nextLine();
         System.out.print("Enter circle color: ");
         String circleColor = sc.nextLine();
 
         System.out.print("Enter square side: ");
         double side = sc.nextDouble();
-        sc.nextLine(); // consume newline
+        sc.nextLine();
         System.out.print("Enter square color: ");
         String squareColor = sc.nextLine();
 
-        // Interface polymorphism
         Shape[] shapes = {
             new Circle(radius, circleColor),
             new Square(side, squareColor)
@@ -113,8 +83,9 @@ public class InterfacePolymorphism {
 
         System.out.println("\n=== Shape Details ===");
         for (Shape s : shapes) {
+            System.out.println(s);   // direct printing via toString()
             s.draw();
-            System.out.printf("Area: %.2f, Perimeter: %.2f%n%n", s.area(), s.perimeter());
+            System.out.println();
         }
 
         sc.close();

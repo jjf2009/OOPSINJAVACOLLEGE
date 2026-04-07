@@ -1,12 +1,8 @@
-// Q4. Smart Home System – Interface + Abstract Class + Concrete Class
 
-// Interface — defines the automation contract
 interface Automation {
-    // Interface method — must be implemented by any class that implements Automation
     void autoControl();
 }
 
-// Abstract class — defines device structure + static utility + abstract operate()
 abstract class HomeDevice {
     private String deviceId;
     private String deviceName;
@@ -18,7 +14,7 @@ abstract class HomeDevice {
         this.isPoweredOn = false;
     }
 
-    // Getters & Setters
+
     public String  getDeviceId()                   { return deviceId; }
     public String  getDeviceName()                 { return deviceName; }
     public boolean isPoweredOn()                   { return isPoweredOn; }
@@ -26,12 +22,10 @@ abstract class HomeDevice {
     public void    setDeviceName(String name)      { this.deviceName = name; }
     public void    setPoweredOn(boolean state)     { this.isPoweredOn = state; }
 
-    // Static method — utility, does not depend on any instance
     public static String deviceCategory() {
         return "Smart Home Device";
     }
 
-    // Abstract — each device operates differently
     public abstract void operate();
 
     @Override
@@ -43,11 +37,11 @@ abstract class HomeDevice {
     }
 }
 
-// Concrete class — extends HomeDevice AND implements Automation
+
 class SmartLight extends HomeDevice implements Automation {
-    private int    brightnessLevel;   // 0–100
-    private String colorTemp;         // "Warm", "Cool", "Daylight"
-    private String mode;              // "Manual", "Auto", "Schedule"
+    private int    brightnessLevel;   
+    private String colorTemp;        
+    private String mode;              
 
     public SmartLight(String deviceId, String deviceName,
                       int brightnessLevel, String colorTemp) {
@@ -65,7 +59,7 @@ class SmartLight extends HomeDevice implements Automation {
     public void   setColorTemp(String colorTemp)        { this.colorTemp = colorTemp; }
     public void   setMode(String mode)                  { this.mode = mode; }
 
-    // From HomeDevice — how this specific device operates
+
     @Override
     public void operate() {
         if (!isPoweredOn()) {
@@ -77,7 +71,7 @@ class SmartLight extends HomeDevice implements Automation {
         System.out.println("  → Color Temp : " + colorTemp);
     }
 
-    // From Automation interface — smart schedule / sensor-driven control
+
     @Override
     public void autoControl() {
         setMode("Auto");
@@ -97,7 +91,7 @@ class SmartLight extends HomeDevice implements Automation {
     }
 }
 
-public class Q4_SmartHome {
+public class SmartHome {
 
     private static int clampBrightness(int value) {
         return Math.max(0, Math.min(100, value));
@@ -115,7 +109,7 @@ public class Q4_SmartHome {
 
         System.out.print("Brightness (0-100): ");
         int brightness = clampBrightness(sc.nextInt());
-        sc.nextLine(); // consume newline
+        sc.nextLine(); 
 
         System.out.print("Color Temp (Warm/Cool/Daylight): ");
         String colorTemp = sc.nextLine();
@@ -134,29 +128,6 @@ public class Q4_SmartHome {
 
         System.out.println("\n=== autoControl() — Interface Method from Automation ===\n");
         light.autoControl();
-
-        System.out.println("\n=== Polymorphism via HomeDevice reference ===");
-        HomeDevice device = new SmartLight("SL-102", "Bedroom Light", 60, "Cool");
-        device.operate();
-
-        System.out.println("\n=== Polymorphism via Automation reference ===");
-        Automation automation = new SmartLight("SL-103", "Kitchen Light", 100, "Daylight");
-        automation.autoControl();
-
-        // Setter demo with user input
-        System.out.print("\nEnter new brightness (0-100): ");
-        int newBrightness = clampBrightness(sc.nextInt());
-        sc.nextLine();
-
-        System.out.print("Enter new color temp (Warm/Cool/Daylight): ");
-        String newColor = sc.nextLine();
-
-        light.setBrightnessLevel(newBrightness);
-        light.setColorTemp(newColor);
-
-        System.out.println("\n=== After Manual Adjustment ===");
-        System.out.println(light);
-
         sc.close();
     }
 }

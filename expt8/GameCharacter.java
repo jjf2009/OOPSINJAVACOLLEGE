@@ -1,4 +1,4 @@
-// Q1. Game Character System – Abstract Class
+
 
 abstract class Character {
     private String name;
@@ -11,7 +11,6 @@ abstract class Character {
         this.level  = level;
     }
 
-    // Getters & Setters
     public String getName()          { return name; }
     public int    getHealth()        { return health; }
     public int    getLevel()         { return level; }
@@ -19,11 +18,10 @@ abstract class Character {
     public void   setHealth(int h)   { this.health = h; }
     public void   setLevel(int l)    { this.level = l; }
 
-    // Abstract methods — subclasses MUST implement these
     public abstract void attack();
     public abstract void defend();
 
-    // Concrete method — shared by all subclasses
+  
     public void displayStats() {
         System.out.println("=== Character Stats ===");
         System.out.println(this);
@@ -50,7 +48,6 @@ class Warrior extends Character {
         this.attackPower = attackPower;
     }
 
-    // Getters & Setters
     public String getWeaponType()              { return weaponType; }
     public int    getArmor()                   { return armor; }
     public int    getAttackPower()             { return attackPower; }
@@ -95,7 +92,6 @@ class Mage extends Character {
         this.manaShield  = manaShield;
     }
 
-    // Getters & Setters
     public String getSpellName()              { return spellName; }
     public int    getManaCost()               { return manaCost; }
     public int    getSpellDamage()            { return spellDamage; }
@@ -129,7 +125,7 @@ class Mage extends Character {
     }
 }
 
-public class Q1_GameCharacter {
+public class GameCharacter {
     public static void main(String[] args) {
         java.util.Scanner sc = new java.util.Scanner(System.in);
 

@@ -1,4 +1,4 @@
-// Q2. Order Processing System – Abstract Class
+
 
 abstract class Order {
     private String orderId;
@@ -6,7 +6,7 @@ abstract class Order {
     private double totalAmount;
     private String status;
 
-    public Order(String orderId, String customerName, double totalAmount) {
+     Order(String orderId, String customerName, double totalAmount) {
         this.orderId      = orderId;
         this.customerName = customerName;
         this.totalAmount  = totalAmount;
@@ -23,10 +23,9 @@ abstract class Order {
     public void   setTotalAmount(double amt)    { this.totalAmount = amt; }
     public void   setStatus(String status)      { this.status = status; }
 
-    // Abstract method — each order type processes differently
     public abstract void processOrder();
 
-    // Final method — cannot be overridden; invoice format stays consistent
+
     public final void generateInvoice() {
         System.out.println("========================================");
         System.out.println("            INVOICE                     ");
@@ -52,7 +51,7 @@ class OnlineOrder extends Order {
     private String paymentMethod;
     private int    estimatedDays;
 
-    public OnlineOrder(String orderId, String customerName, double totalAmount,
+    OnlineOrder(String orderId, String customerName, double totalAmount,
                        String deliveryAddress, String paymentMethod, int estimatedDays) {
         super(orderId, customerName, totalAmount);
         this.deliveryAddress = deliveryAddress;
@@ -60,7 +59,6 @@ class OnlineOrder extends Order {
         this.estimatedDays   = estimatedDays;
     }
 
-    // Getters & Setters
     public String getDeliveryAddress()                    { return deliveryAddress; }
     public String getPaymentMethod()                      { return paymentMethod; }
     public int    getEstimatedDays()                      { return estimatedDays; }
@@ -99,7 +97,6 @@ class StoreOrder extends Order {
         this.staffName   = staffName;
     }
 
-    // Getters & Setters
     public String getStoreBranch()                  { return storeBranch; }
     public String getStaffName()                    { return staffName; }
     public void   setStoreBranch(String branch)     { this.storeBranch = branch; }
@@ -123,7 +120,7 @@ class StoreOrder extends Order {
                "\nStaff      : " + staffName;
     }
 }
-public class Q2_OrderProcessing {
+public class OrderProcessing {
     public static void main(String[] args) {
         java.util.Scanner sc = new java.util.Scanner(System.in);
 
@@ -181,13 +178,6 @@ public class Q2_OrderProcessing {
         online.generateInvoice();
         System.out.println();
         store.generateInvoice();
-
-        System.out.print("\nEnter discounted amount for Online Order: ");
-        double discountedAmount = Double.parseDouble(sc.nextLine());
-        online.setTotalAmount(discountedAmount);
-
-        System.out.println("\n=== After Discount Applied to Online Order ===");
-        System.out.println(online);
 
         sc.close();
     }

@@ -1,10 +1,10 @@
-// Q1. Method Overloading – Logger Utility
+
 
 class Logger {
     private String loggerName;
     private int    totalLogs;
 
-    public Logger(String loggerName) {
+    Logger(String loggerName) {
         this.loggerName = loggerName;
         this.totalLogs  = 0;
     }
@@ -52,23 +52,17 @@ public class MethodOverloading {
 
         System.out.println("=== Overloaded log() calls ===\n");
 
-        // Calls log(String)
         logger.log("Application started.");
 
-        // Calls log(String, int)
         logger.log("Memory usage high.", 2);
         logger.log("Null pointer in PaymentService.", 3);
         logger.log("Config loaded successfully.", 1);
-
-        // Calls log(String, String)
+        
         logger.log("User login detected.", "2025-04-01 10:30:00");
         logger.log("Scheduled backup triggered.", "2025-04-01 11:00:00");
 
         System.out.println("\n=== Logger Summary ===");
         System.out.println(logger);
 
-        // Setter demo
-        logger.setLoggerName("SystemLogger");
-        System.out.println("\nRenamed logger: " + logger.getLoggerName());
     }
 }
