@@ -47,8 +47,7 @@ class Bus extends Transport {
 
     @Override
     public String toString() {
-        return "[Bus]\n" + super.toString() +
-               "\nPassengers: " ;
+        return "[Bus]\n" + super.toString() ;
     }
 }
 

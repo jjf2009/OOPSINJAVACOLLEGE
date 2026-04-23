@@ -40,3 +40,13 @@ public class LoggerSystem {
 
     }
 }
+// This will cause a compile-time error because Logger is final.
+class AdvancedLogger extends Logger {
+    AdvancedLogger(String loggerName) {
+        super(loggerName);
+    }
+
+    public void logDebug(String message) {
+        logMessage("DEBUG", message);
+    }
+}

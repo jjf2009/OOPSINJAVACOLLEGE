@@ -27,7 +27,6 @@ class SavingsAccount extends Account {
      SavingsAccount(String accountNumber, String accountHolder, double interestRate) {
         super(accountNumber, accountHolder);   
         this.interestRate = interestRate;
-        System.out.println("SavingsAccount constructor called.");
     }
 
     public double getInterestRate() { return interestRate; }
