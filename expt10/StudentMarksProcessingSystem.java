@@ -47,21 +47,11 @@ class Student {
     }
 
     public String calculateGrade() {
-        if (marks >= 90) {
-            return "A+";
-        }
-        if (marks >= 80) {
-            return "A";
-        }
-        if (marks >= 70) {
-            return "B";
-        }
-        if (marks >= 60) {
-            return "C";
-        }
-        if (marks >= 50) {
-            return "D";
-        }
+        if (marks >= 90) return "A+";
+        if (marks >= 80) return "A";
+        if (marks >= 70) return "B";
+        if (marks >= 60) return "C";
+        if (marks >= 50) return "D";
         return "F";
     }
 
@@ -75,43 +65,66 @@ class Student {
 
 public class StudentMarksProcessingSystem {
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
         char continueChoice = 'Y';
 
         while (continueChoice == 'Y' || continueChoice == 'y') {
-            try {
-                System.out.println("\n=== Student Marks Processing System ===");
-                System.out.print("Enter student name: ");
-                String name = scanner.nextLine();
 
-                if (name == null || name.trim().isEmpty()) {
-                    throw new IllegalArgumentException("Student name cannot be null or empty.");
+            System.out.println("\n=== Student Marks Processing System ===");
+
+            String name = "";
+            int marks = -1;
+
+            // LOOP FOR NAME
+            while (true) {
+                try {
+                    System.out.print("Enter student name: ");
+                    name = scanner.nextLine();
+
+                    if (name == null || name.trim().isEmpty()) {
+                        throw new IllegalArgumentException("Student name cannot be null or empty.");
+                    }
+
+                    break;
+
+                } catch (IllegalArgumentException e) {
+                    System.out.println("IllegalArgumentException Caught: " + e.getMessage());
                 }
-
-                System.out.print("Enter marks (0-100): ");
-                int marks = scanner.nextInt();
-
-                if (marks < 0 || marks > 100) {
-                    throw new InvalidMarksException(marks);
-                }
-
-                Student student = new Student(name.trim(), marks);
-                System.out.println("\nProcessing Successful.");
-                System.out.println(student);
-            } catch (InvalidMarksException e) {
-                System.out.println("Custom Checked Exception Caught: " + e.getMessage());
-            } catch (InputMismatchException e) {
-                System.out.println("InputMismatchException Caught: Marks must be an integer value.");
-                scanner.next();
-            } catch (IllegalArgumentException e) {
-                System.out.println("IllegalArgumentException Caught: " + e.getMessage());
-            } finally {
-                System.out.println("Processing completed for this student entry.");
             }
 
+            // LOOP FOR MARKS
+            while (true) {
+                try {
+                    System.out.print("Enter marks (0-100): ");
+                    marks = scanner.nextInt();
+
+                    if (marks < 0 || marks > 100) {
+                        throw new InvalidMarksException(marks);
+                    }
+
+                    break;
+
+                } catch (InvalidMarksException e) {
+                    System.out.println("Custom Checked Exception Caught: " + e.getMessage());
+                } catch (InputMismatchException e) {
+                    System.out.println("InputMismatchException Caught: Marks must be an integer.");
+                    scanner.next();
+                }
+            }
+
+            Student student = new Student(name.trim(), marks);
+
+            System.out.println("\nProcessing Successful.");
+            System.out.println(student);
+
+            System.out.println("Processing completed for this student entry.");
+
             scanner.nextLine();
+
             System.out.print("Do you want to test another scenario? (Y/N): ");
             String response = scanner.nextLine();
+
             continueChoice = response.isEmpty() ? 'N' : response.charAt(0);
         }
 
