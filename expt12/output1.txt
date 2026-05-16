@@ -1,0 +1,5 @@
+Acc: ACC001 | Name: Rajesh Kumar | Balance: 52000.00
+Acc: ACC002 | Name: Priya Singh | Balance: 78000.00
+Acc: ACC003 | Name: Amit Patel | Balance: 104000.00
+Acc: ACC004 | Name: Neha Sharma | Balance: 62400.00
+Acc: ACC005 | Name: Vikram Gupta | Balance: 88400.00

@@ -4,14 +4,13 @@ import java.util.Vector;
 class PairFinder {
     private Vector<Integer> numbers = new Vector<>();
 
-    // Default constructor
     public PairFinder() {}
 
     public void add(int n) { 
         numbers.add(n); 
     }
 
-    // Finds unique pairs (i, j) where i < j that sum to target
+
     public void findPairs(int target) {
         System.out.printf("Pairs for sum %d:%n", target);
         boolean found = false;

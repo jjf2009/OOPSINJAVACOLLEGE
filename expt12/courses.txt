@@ -1,0 +1,8 @@
+CS101,Introduction to Java,5000.0
+CS102,Advanced OOP,7500.0
+CS103,Data Structures,6500.0
+CS104,Database Management,6000.0
+CS105,Web Development,8000.0
+CS106,Mobile App Development,9000.0
+CS107,Machine Learning Basics,10000.0
+CS108,Cloud Computing,8500.0

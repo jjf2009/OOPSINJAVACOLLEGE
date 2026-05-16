@@ -25,7 +25,7 @@ public class CourseSystem {
         try (Scanner sc = new Scanner(new File("courses.txt"))) {
             while (sc.hasNextLine()) {
                 String[] data = sc.nextLine().split(",");
-                Course c = new Course(data, data[1], Double.parseDouble(data[2]));
+                Course c = new Course(data[0], data[1], Double.parseDouble(data[2]));
                 totalFees += c.getFee();
             }
 

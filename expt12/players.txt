@@ -1,0 +1,4 @@
+Virat Kohli,12000
+Rohit Sharma,11000
+MS Dhoni,10000
+Sachin Tendulkar,15000

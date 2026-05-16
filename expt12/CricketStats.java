@@ -23,7 +23,7 @@ public class CricketStats {
         try (Scanner sc = new Scanner(new File("players.txt"))) {
             while (sc.hasNextLine()) {
                 String[] data = sc.nextLine().split(",");
-                players.add(new Player(data, Integer.parseInt(data[1])));
+                players.add(new Player(data[0], Integer.parseInt(data[1])));
             }
             
             Player top = players.get(0);

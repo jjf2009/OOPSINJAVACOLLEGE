@@ -27,7 +27,7 @@ public class SavingsSystem {
              PrintWriter out = new PrintWriter(new FileWriter("output1.txt"))) {
             while (sc.hasNextLine()) {
                 String[] data = sc.nextLine().split(",");
-                SavingsAccount sa = new SavingsAccount(data, data[1], Double.parseDouble(data[2]));
+                SavingsAccount sa = new SavingsAccount(data[0], data[1], Double.parseDouble(data[2]));
                 sa.applyInterest(0.04);
                 out.println(sa.toString());
             }
