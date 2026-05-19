@@ -29,7 +29,9 @@ public class SavingsSystem {
                 String[] data = sc.nextLine().split(",");
                 SavingsAccount sa = new SavingsAccount(data[0], data[1], Double.parseDouble(data[2]));
                 sa.applyInterest(0.04);
-                out.println(sa.toString());
+                String record = sa.toString();
+                out.println(record);
+                System.out.println(record);
             }
             System.out.println("Interest applied and saved to output1.txt");
         } catch (IOException e) { System.err.println("File Error: " + e.getMessage()); }

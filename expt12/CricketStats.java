@@ -32,7 +32,7 @@ public class CricketStats {
             try (PrintWriter out = new PrintWriter("top_scorer.txt")) {
                 out.println("Highest Scorer: " + top.toString());
             }
-            System.out.println("Top scorer written to top_scorer.txt");
+            System.out.println("Top scorer is "+top.toString()+" and written to top_scorer.txt");
         } catch (IOException e) { System.err.println("Error: " + e.getMessage()); }
     }
 }

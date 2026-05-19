@@ -32,7 +32,7 @@ public class CourseSystem {
             try (PrintWriter out = new PrintWriter("total_fees.txt")) {
                 out.println("Total Enrollment Fees for all courses: " + totalFees);
             }
-            System.out.println("Total fees calculated and saved to total_fees.txt");
+            System.out.println("Total fees calculated is "+ totalFees+ " and saved to total_fees.txt");
         } catch (IOException e) { System.err.println("Error: " + e.getMessage()); }
     }
 }
