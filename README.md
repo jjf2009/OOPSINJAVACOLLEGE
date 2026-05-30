@@ -82,3 +82,9 @@ Object Oriented Programming Java programs, OOPS Java lab experiments, Java colle
 ## License
 
 This repository is for educational use.
+
+CREATE TABLE items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL UNIQUE,
+    number INT NOT NULL,
+);

@@ -1,66 +1,45 @@
-
+import java.util.Scanner;
 class Account {
-    private String accountNumber;
-    private String accountHolder;
-
-     Account(String accountNumber, String accountHolder) {
-        this.accountNumber = accountNumber;
-        this.accountHolder = accountHolder;
-    }
-
-    public String getAccountNumber() { return accountNumber; }
-    public String getAccountHolder()  { return accountHolder; }
-
-    public void setAccountNumber(String accountNumber) { this.accountNumber = accountNumber; }
-    public void setAccountHolder(String accountHolder) { this.accountHolder = accountHolder; }
-
-    @Override
-    public String toString() {
-        return "Account Number : " + accountNumber +
-               "\nAccount Holder : " + accountHolder;
-    }
+ private int accounNumber;
+ private String accountHolder;
+ 
+ Account(int accounNumber,String accountHolder){
+ this.accounNumber = accounNumber;
+ this.accountHolder= accountHolder;
 }
 
-class SavingsAccount extends Account {
-    private double interestRate;
 
-     SavingsAccount(String accountNumber, String accountHolder, double interestRate) {
-        super(accountNumber, accountHolder);   
-        this.interestRate = interestRate;
-    }
 
-    public double getInterestRate() { return interestRate; }
-
-    public void setInterestRate(double interestRate) { this.interestRate = interestRate; }
-
-    @Override
-    public String toString() {
-        return super.toString() +"\nInterest Rate  : " + interestRate + "%";
-    }
+void display(){
+  System.out.println("Account Number: "+ accounNumber+" Account Holder Name: "+accountHolder);
+}
 }
 
-public class SavingsAccountSystem {
-    public static void main(String[] args) {
+class SavingsAccount extends Account{
+	private float interestRate;
+	 SavingsAccount(int accounNumber,String accountHolder,float interestRate){
+		 super(accounNumber,accountHolder);
+		 this.interestRate= interestRate;
+	 }
+	 
+	 void display(){
+		 System.out.println( "Interest Rate : "+interestRate);
+		 super.display();
+	 }
+}
 
-        java.util.Scanner sc = new java.util.Scanner(System.in);
-
-        System.out.print("Enter Account Number: ");
-        String accountNumber = sc.nextLine();
-
-        System.out.print("Enter Account Holder: ");
-        String accountHolder = sc.nextLine();
-
-        System.out.print("Enter Interest Rate: ");
-        double interestRate = sc.nextDouble();
-
-        SavingsAccount sa = new SavingsAccount(accountNumber, accountHolder, interestRate);
-        System.out.println("\n--- Account Details ---");
-        System.out.println(sa);
-
-        System.out.print("\nEnter Updated Interest Rate: ");
-        sa.setInterestRate(sc.nextDouble());
-
-        System.out.println("\n--- After Updating Interest Rate ---");
-        System.out.println(sa);
-    }
+class SavingsAccountSystem {
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter Account Number: ");
+		int accnum = sc.nextInt();
+		      sc.nextLine();
+		System.out.println("Enter Account Holder:");
+		String accholder = sc.nextLine();
+		System.out.println("Enter Interest rate:");
+		float rate = sc.nextFloat();
+		
+		Account a = new SavingsAccount(accnum,accholder,rate);
+		a.display();
+	}
 }

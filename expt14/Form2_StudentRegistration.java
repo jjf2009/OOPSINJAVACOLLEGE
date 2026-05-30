@@ -53,7 +53,6 @@ public class Form2_StudentRegistration extends JFrame {
 
         add(new JLabel("Year"));
         add(yearBox);
-        l;lpl[]
 
         add(new JLabel("Gender"));
 
