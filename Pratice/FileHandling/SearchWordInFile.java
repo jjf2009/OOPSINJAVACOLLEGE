@@ -6,14 +6,14 @@ import java.util.Scanner;
 public class SearchWordInFile {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
+q
         System.out.print("Enter word to search: ");
         String word = sc.nextLine();
         boolean found = false;
 
         try (BufferedReader reader = new BufferedReader(new FileReader("sample.txt"))) {
             String line;
-            int lineNo = 0;
+            int lineNo = 0; 
 
             while ((line = reader.readLine()) != null) {
                 lineNo++;
