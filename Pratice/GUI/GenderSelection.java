@@ -24,8 +24,7 @@ public class GenderSelection extends JFrame {
         add(showBtn);
 
         showBtn.addActionListener(e -> {
-            String gender = male.isSelected() ? "Male"
-                    : female.isSelected() ? "Female" : "Not selected";
+            String gender = male.isSelected() ? "Male" : female.isSelected() ? "Female" : "Not selected";
             JOptionPane.showMessageDialog(this, "Selected Gender: " + gender);
         });
 
