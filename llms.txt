@@ -1,0 +1,45 @@
+# Java OOPS / OOP Lab Programs
+
+> Free educational Java repository for Object-Oriented Programming (OOPS/OOP) college labs and ISA exams.
+
+## Summary
+
+This repository provides simple, exam-ready Java source code covering classes, objects, inheritance, abstract classes, polymorphism, interfaces, exception handling, collections (ArrayList, LinkedList, Vector, Stack), file I/O, Swing GUI, JDBC, and multithreading.
+
+## Primary URL
+
+https://github.com/jjf2009/java-oops-oop-lab-programs
+
+## Audience
+
+BCA, BSc CS, BE/BTech, diploma students learning Java OOP for practicals, viva, and internal assessments.
+
+## Key folders
+
+- /ISA/ISA2/ — Abstract class + polymorphism exam programs
+- /ISA/ISA3/ — Interface + collections + file + exception exam programs
+- /expt1/ through /expt15/ — Full semester lab experiments
+- /Pratice/ — Topic-wise practice packs
+- /Pratice2/ — Additional practice
+- /GP/ — Swing GUI demos
+- /Personal_Project/ — Inventory mini project
+
+## Notable ISA3 programs
+
+StudentMarksSaver, AttendanceTracker, ProductInventory, BrowserHistory, BusSeatBooking, ContactBook, SimpleTaskManager, QuizScoreBoard
+
+## Notable ISA2 programs
+
+EmployeePayrollSystem, VehicleRentalService, ShapeAreaCalculator, PetAdoptionCenter, SupermarketBilling, StudentResultManagement, HospitalPatientTracker, LibraryBookManager, BankAccountManager, SchoolCourseEnrollment, ProductInventoryTracker, HotelRoomBookingSystem, MusicPlaylistManager, FitnessTracker, FoodOrderSystem, StudentGradeTracker
+
+## How to run
+
+```
+cd ISA/ISA3/StudentMarksSaver
+javac StudentMarksSaver.java
+java StudentMarksSaver
+```
+
+## Keywords
+
+Java OOPS, Java OOP, object-oriented programming lab, inheritance, polymorphism, interface, ArrayList, exception handling, FileWriter, Swing, JDBC, multithreading, college Java practical, ISA exam Java
